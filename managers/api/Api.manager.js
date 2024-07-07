@@ -23,7 +23,7 @@ module.exports = class ApiHandler {
         this.methodMatrix  = {};
         this.auth          = {};
         this.fileUpload    = {};
-        this.mwsStack        = {};
+        this.mwsStack      = {};
         this.mw            = this.mw.bind(this);
 
         /** filter only the modules that have interceptors */
@@ -93,7 +93,7 @@ module.exports = class ApiHandler {
         });
 
         /** expose apis through cortex */
-        this.cortex.sub('*', (d, meta, cb) => {
+        this.cortex?.sub('*', (d, meta, cb) => {
             let [moduleName, fnName] = meta.event.split('.');
             let targetModule = this.exposed[moduleName];
             if (!targetModule) return cb({ error: `module ${moduleName} not found` });
