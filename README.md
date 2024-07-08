@@ -16,7 +16,7 @@ https://seahorse-app-8v932.ondigitalocean.app/
 ```json
 {
     "headers": {
-        "token": token
+        "token": "token"
     },
 }
 ```
@@ -29,7 +29,7 @@ Responses from the API will be in one of the following formats:
     ```json
     {
         "ok": true,
-        "data": { ...data },
+        "data": { "school": {} },
         "errors": [],
         "message": ""
     }
@@ -41,7 +41,7 @@ Responses from the API will be in one of the following formats:
         "ok": false,
         "data": {},
         "errors": [],
-        "message": "...message"
+        "message": "message"
     }
     ```
 
@@ -50,7 +50,7 @@ Responses from the API will be in one of the following formats:
     {
         "ok": false,
         "data": {},
-        "errors": [...errors],
+        "errors": [{ "label": "label" }, { "label": "label" }],
         "message": ""
     }
     ```
