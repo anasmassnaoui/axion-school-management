@@ -6,11 +6,18 @@ const ResponseDispatcher    = require('../managers/response_dispatcher/ResponseD
 const VirtualStack          = require('../managers/virtual_stack/VirtualStack.manager');
 const ValidatorsLoader      = require('./ValidatorsLoader');
 const ResourceMeshLoader    = require('./ResourceMeshLoader');
-const MongoLoader    = require('./MongoLoader');
+const MongoLoader           = require('./MongoLoader');
 const utils                 = require('../libs/utils');
 
 const systemArch            = require('../static_arch/main.system');
 const TokenManager          = require('../managers/token/Token.manager');
+
+const UserManager           = require('../managers/user/User.manager');
+const SchoolManager         = require('../managers/school/School.manager');
+const ClassRoomManager      = require('../managers/classroom/ClassRoom.manager');
+const AdminManager          = require('../managers/user/Admin.manager');
+const StudentManager        = require('../managers/user/Student.manager');
+
 // const SharkFin              = require('../managers/shark_fin/SharkFin.manager');
 // const TimeMachine           = require('../managers/time_machine/TimeMachine.manager');
 
@@ -64,13 +71,18 @@ module.exports = class ManagersLoader {
         const { layers, actions }         = systemArch;
         this.injectable.mwsRepo           = mwsRepo;
         /*****************************************CUSTOM MANAGERS*****************************************/
-        // this.managers.shark               = new SharkFin({ ...this.injectable, layers, actions });
-        // this.managers.timeMachine         = new TimeMachine(this.injectable);
-
+        /******** Endpoint: /token ********/
         this.managers.token               = new TokenManager(this.injectable);
-        // this.managers.schools             = new SchoolManager();
-        // this.managers.classRoom           = new ClassRoomManager();
-        // this.managers.students            = new StudentManager();
+        /******** Endpoint: /user ********/
+        this.managers.user                = new UserManager(this.injectable);
+        /******** Endpoint: /school ********/
+        this.managers.school              = new SchoolManager(this.injectable);
+        /******** Endpoint: /classroom ********/
+        this.managers.classroom           = new ClassRoomManager(this.injectable);
+        /******** Endpoint: /admin ********/
+        this.managers.admin               = new AdminManager(this.injectable);
+        /******** Endpoint: /student ********/
+        this.managers.student             = new StudentManager(this.injectable);
         /*************************************************************************************************/
         this.managers.mwsExec             = new VirtualStack({ ...{ preStack: [/* '__token', */'__device',] }, ...this.injectable });
         this.managers.userApi             = new ApiHandler({...this.injectable,...{prop:'httpExposed'}});

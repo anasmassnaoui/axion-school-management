@@ -24,8 +24,9 @@ const config                           = require(`./envs/${ENV}.js`);
 const LONG_TOKEN_SECRET                = process.env.LONG_TOKEN_SECRET || null;
 const SHORT_TOKEN_SECRET               = process.env.SHORT_TOKEN_SECRET || null;
 // const NACL_SECRET                      = process.env.NACL_SECRET || null;
+const PASSWORD_SALT                    = process.env.PASSWORD_SALT || null;
 
-if(!LONG_TOKEN_SECRET || !SHORT_TOKEN_SECRET) {
+if(!LONG_TOKEN_SECRET || !SHORT_TOKEN_SECRET || !PASSWORD_SALT) {
     throw Error('missing .env variables check index.config');
 }
 
@@ -45,6 +46,7 @@ config.dotEnv = {
     ADMIN_URL,
     LONG_TOKEN_SECRET,
     SHORT_TOKEN_SECRET,
+    PASSWORD_SALT,
 };
 
 

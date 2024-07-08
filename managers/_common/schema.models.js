@@ -9,50 +9,45 @@ module.exports = {
     username: {
         path: 'username',
         type: 'string',
-        length: {min: 3, max: 20},
+        length: { min: 3, max: 20 },
         custom: 'username',
     },
     password: {
         path: 'password',
         type: 'string',
-        length: {min: 8, max: 100},
-    },
-    email: {
-        path: 'email',
-        type: 'string',
-        length: {min:3, max: 100},
+        length: { min: 8, max: 100 },
     },
     title: {
         path: 'title',
         type: 'string',
-        length: {min: 3, max: 300}
+        length: { min: 3, max: 300 }
     },
     label: {
         path: 'label',
         type: 'string',
-        length: {min: 3, max: 100}
+        length: { min: 3, max: 100 }
     },
     shortDesc: {
         path: 'desc',
         type: 'string',
-        length: {min:3, max: 300}
+        length: { min: 3, max: 300 }
     },
     longDesc: {
         path: 'desc',
         type: 'string',
-        length: {min:3, max: 2000}
+        length: { min: 3, max: 2000 }
     },
     url: {
         path: 'url',
         type: 'string',
-        length: {min: 9, max: 300},
+        length: { min: 9, max: 300 },
     },
     emoji: {
         path: 'emoji',
         type: 'Array',
         items: {
             type: 'string',
-            length: {min: 1, max: 10},
+            length: { min: 1, max: 10 },
             oneOf: emojis.value,
         }
     },
@@ -63,19 +58,19 @@ module.exports = {
     avatar: {
         path: 'avatar',
         type: 'string',
-        length: {min: 8, max: 100},
+        length: { min: 8, max: 100 },
     },
     text: {
         type: 'String',
-        length: {min: 3, max:15},
+        length: { min: 3, max: 15 },
     },
     longText: {
         type: 'String',
-        length: {min: 3, max:250},
+        length: { min: 3, max: 250 },
     },
     paragraph: {
         type: 'String',
-        length: {min: 3, max:10000},
+        length: { min: 3, max: 10000 },
     },
     phone: {
         type: 'String',
@@ -87,13 +82,13 @@ module.exports = {
     },
     number: {
         type: 'Number',
-        length: {min: 1, max:6},
+        length: { min: 1, max: 6 },
     },
     arrayOfStrings: {
         type: 'Array',
         items: {
             type: 'String',
-            length: { min: 3, max: 100}
+            length: { min: 3, max: 100 }
         }
     },
     obj: {
@@ -102,4 +97,16 @@ module.exports = {
     bool: {
         type: 'Boolean',
     },
+    objectId: {
+        type: 'String',
+        regex: /^(?=[a-f\d]{24}$)(\d+[a-f]|[a-f]+\d)/i,
+    },
+    day: {
+        type: 'String',
+        oneOf: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    },
+    time: {
+        type: 'String',
+        regex: /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/i,
+    }
 }

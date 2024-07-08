@@ -1,75 +1,59 @@
 
 
 module.exports = {
-    login: [
-        {
-            path: 'email',
-            model: 'email',
-            required: true,
-        },
-        {
-            model: 'password',
-            required: true,
-        },
-    ],
-    listStudents: [
+    list: [
         {
             path: 'schoolId',
             model: 'objectId',
             required: true,
         },
     ],
-    createAdmin: [
+    create: [
         {
             path: 'name',
             model: 'text',
             required: true,
         },
-        {
-            path: 'email',
-            model: 'email',
-            required: true,
-        },
-        {
-            model: 'password',
-            required: true,
-        },
-    ],
-    createStudent: [
         {
             path: 'schoolId',
             model: 'objectId',
             required: true,
         },
+        // schedule
         {
-            path: 'name',
-            model: 'text',
+            path: 'schedule.day',
+            model: 'day',
             required: true,
         },
         {
-            path: 'email',
-            model: 'email',
+            path: 'schedule.startTime',
+            model: 'time',
             required: true,
         },
         {
-            model: 'password',
+            path: 'schedule.endTime',
+            model: 'time',
             required: true,
-        },
+        }
     ],
-    deleteAdmin: [
+    delete: [
         {
-            path: 'adminId',
+            path: 'classroomId',
             model: 'objectId',
             required: true,
         },
     ],
-    deleteStudent: [
+    enroll: [
         {
             path: 'studentId',
             model: 'objectId',
             required: true,
         },
+        {
+            path: 'classroomId',
+            model: 'objectId',
+            required: true,
+        },
     ],
 }
-
 
