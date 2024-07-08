@@ -154,7 +154,7 @@ module.exports = class SchoolManager {
         if (userRole === 'student') filter.students = userId
         const hasAccess = await this.mongomodels.school.exists(filter);
         if (!hasAccess) {
-            return { error: 'unauthorized' }
+            return { error: 'access denied.' }
         }
         return {}
     }
@@ -165,7 +165,7 @@ module.exports = class SchoolManager {
         if (userRole === 'admin') filter.admins = userId
         const hasAccess = await this.mongomodels.school.exists(filter);
         if (!hasAccess) {
-            return { error: 'unauthorized' }
+            return { error: 'access denied.' }
         }
         return {}
     }

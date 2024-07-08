@@ -105,7 +105,7 @@ module.exports = class ClassRoomManager {
         } else if (classroom.schoolId !== school._id.toString()) {
             return { error: 'classroom not belong to user school.' }
         } else if (userRole === 'admin' && !school.admins.includes(userId)) {
-            return { error: 'unauthorized.' }
+            return { error: 'access denied.' }
         }
 
         return { student, classroom, school };
