@@ -189,4 +189,13 @@ Responses from the API will be in one of the following formats:
   - **Description**: Creates a new student.
   - **Input**:
     - `schoolId`: string - The unique identifier of the school.
+    - `name`: string - The name of the new student.
+    - `email`: string - The email address of the new student.
+    - `password`: string - The password for the new student account.
+
+- **Endpoint: /v1_delete**
+  - **Permission**: superadmin, admin
+  - **Description**: Deletes a student.
+  - **Input**:
+    - `studentId`: string - The unique identifier of the student to be deleted.
    
